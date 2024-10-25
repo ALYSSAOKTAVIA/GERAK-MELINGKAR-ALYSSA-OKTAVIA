@@ -1,0 +1,76 @@
+def hitung_periode(t, n):
+    if n == 0:
+        print("Banyak putaran tidak boleh nol.")
+    T = t / n
+    return T
+
+def hitung_frekuensi(n, t):
+    if t == 0:
+        print("Waktu tidak boleh nol.")
+    f = n / t
+    return f
+
+def hitung_kecepatan_linear1(r, f):
+    phi = 3.14
+    v = 2 * phi * r * f
+    return v
+
+def hitung_kecepatan_sudut(f):
+    phi = 3.14
+    omega = 2 * phi * f
+    return omega 
+
+def hitung_kecepatan_linear2(r, omega):
+    v = r * omega
+    return v
+
+def main():
+    print("Program untuk menghitung Gerak Melingkar")
+    print("1. hitung periode (T)")
+    print("2. hitung frekuensi (f)")
+    print("3. hitung kecepatan linear1 (v)")
+    print("4. hitung kecepatan sudut (ω)")
+    print("5. hitung kecepatan linear2 (v)")
+
+    pilihan = input("Masukkan pilihan 1/2/3/4/5:")
+
+    if pilihan == "1":
+        n = float(input("Masukkan banyak putaran: "))
+        t = float(input("Masukkan waktu dalam s: "))
+        try:
+            T = hitung_periode(t, n)
+            print(f"Periodenya sebesar: {T:.2f} s")
+        except ValueError as e:
+            print(e)
+
+    elif pilihan == "2":
+        n = float(input("Masukkan banyak putaran:"))
+        t = float(input("Masukkan waktu dalam s:"))
+        try:
+            f = hitung_frekuensi(n, t)
+            print(f"Frekuensi sebesar: {f:.2f} Hz")
+        except ValueError as e:
+            print(e)
+
+    elif pilihan == "3":
+        r = float(input("Masukkan jari-jari lingkaran dalam m:"))
+        f = float(input("Masukkan frekuensinya dalam Hz:"))
+        v = hitung_kecepatan_linear1(r, f)
+        print(f"Kecepatan linear dengan metode perhitungan 1 sebesar: {v:.2f} m/s")
+
+    elif pilihan == "4":
+        f = float(input("Masukkan frekuensinya dalam Hz:"))
+        omega = hitung_kecepatan_sudut(f)
+        print(f"Kecepatan sudutnya sebesar: {omega:.2f} rad/s")
+
+    elif pilihan == "5":
+        r = float(input("Masukkan jari-jari lingkaran dalam m:"))
+        omega = float(input("Masukkan kecepatan sudutnya dalam rad/s:"))
+        v = hitung_kecepatan_linear2(r, omega)
+        print(f"Kecepatan linear dengan metode perhitungan 2 sebesar : {v:.2f} m/s")
+
+    else:
+        print("Pilihan tidak sesuai, silahkan pilih 1/2/3/4/5")
+
+if __name__ == "__main__":
+    main()
